@@ -72,7 +72,7 @@ namespace GradeCalculator
             // All the same as GetTotalCreditHours.
             // I could probably make both of these into one function returning a record,
             // but I didn't.
-            int GetTotalGradePoints(int creditHours, Course[] courses)
+            int GetTotalGradePoints(Course[] courses)
             {
                 int totalGradePoints = 0;
 
@@ -91,7 +91,7 @@ namespace GradeCalculator
 
                     // Grade Points is creditHours * the grade. Each grade letter corresponds
                     // to a specific number, as seen above.
-                    totalGradePoints += creditHours * gradeNum;
+                    totalGradePoints += course.Credit * gradeNum;
                 }
 
                 return totalGradePoints;
@@ -113,7 +113,7 @@ namespace GradeCalculator
 
             // Assigning these for use a few nanoseconds into the future.
             int totalCreditHours = GetTotalCreditHours(sophia.Courses);
-            int totalGradePoints = GetTotalGradePoints(totalCreditHours, sophia.Courses);
+            int totalGradePoints = GetTotalGradePoints(sophia.Courses);
 
             // And the only part you actually see: fun!
             Console.WriteLine($"|-----------COURSES AND GPA-----------|");
